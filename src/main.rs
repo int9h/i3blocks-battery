@@ -19,11 +19,11 @@ fn main() {
     let path = Path::new("/sys/class/power_supply");
     let base_path = path.join(battery);
 
-    let mut capacity = capacity(base_path.clone()).to_string();
+    let mut capacity = get_value(base_path.clone(), "capacity".to_string()).to_string();
     let len_capacity = capacity.len();
     capacity.truncate(len_capacity - 1);
 
-    let mut status = status(base_path.clone()).to_string();
+    let mut status = get_value(base_path.clone(), "status".to_string()).to_string();
     let len_status = status.len();
     status.truncate(len_status - 1);
 
@@ -53,27 +53,12 @@ fn main() {
     }
 }
 
-/**
- * read battery capacity
- */
-fn capacity(base_path: PathBuf) -> String {
+fn get_value(base_path: PathBuf, value: String) -> String {
     let mut path = PathBuf::from(base_path);
-    path.push("capacity");
+    path.push(value);
     return get_information(path);
 }
 
-/**
- * read battery capacity
- */
-fn status(base_path: PathBuf) -> String {
-    let mut path = PathBuf::from(base_path);
-    path.push("status");
-    return get_information(path);
-}
-
-/**
- * get information from file
- */
 fn get_information(path: PathBuf) -> String {
     let mut file = match File::open(&path) {
         Err(why) => panic!("couldn't open {}: {}", path.display(), why.description()),
