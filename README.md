@@ -4,7 +4,7 @@ This is a fork of the [battery blocklet](https://github.com/vivien/i3blocks/blob
 
 ### Build
 ```
-$ cargo build
+$ cargo build --release
 ```
 
 ### Add to i3blocks.conf
