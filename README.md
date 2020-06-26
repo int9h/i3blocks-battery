@@ -1,7 +1,5 @@
 # i3blocks-battery
 
-This is a fork of the [battery blocklet](https://github.com/vivien/i3blocks/blob/master/scripts/battery) written in Rust.
-
 ### Build
 ```
 $ cargo build --release
