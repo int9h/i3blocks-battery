@@ -3,3 +3,4 @@
 name = "i3blocks-battery"
 version = "0.0.1"
 authors = [ "Manuel Wildauer <m.wildauer@gmail.com>" ]
+license = "GPL-3.0-or-later"
